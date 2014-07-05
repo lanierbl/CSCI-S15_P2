@@ -9,20 +9,22 @@ ini_set('display_errors', 1);
     <meta charset="utf-8">
     <title>Brent Lanier - P2 - CSCI S-15 (Summer 2014)</title>
 
+    <?php require 'logic.php' ?>
+
     <link rel='stylesheet' href='style.css' type='text/css'>
 
 </head>
 
 <body>
 
-    <form method="post" action="logic.php">
+    <form method="post" action="index.php">
 
-        Password Length: 0<input type="range" name="numPassWords" min="1" max="10">10
+        Password Length: 1<input type="range" name="numPassWords" min="1" max="8" step="1">8
         <input type="submit" value="Submit" />
 
     </form>
 
-    <h1><? echo $passwd ?></h1>
+    <h1><? echo getPasswd() ?></h1>
 
 </body>
 </html>
