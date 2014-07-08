@@ -11,7 +11,7 @@ I have incorporated Ajax and JSON into my submission of P2.
 
 I haven't worked with either of these two technologies until this exercise and wanted to do some research to see how it deferred from the FORMS POST process that we have discussed in class.
 
-It was a challenge to get the syntax right (I've spent many an hour looking at past Stack Overflow postings) but I'm happy to report that it is working by design.  It's nice not to have the POST confirmation dialogs anymore!
+It was a challenge to get the syntax right (I've spent many an hour looking at past Stackoverflow postings) but I'm happy to report that it is working by design.  It's nice not to have the POST confirmation dialogs anymore!
 
 The wordlist (used by the password generator) was the 85K list posted on Piazza.  I'm using a big look that randomly picks a line for the word out of the word list (# of loops based on the # of words selected by the user).
 
