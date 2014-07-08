@@ -28,14 +28,22 @@ ini_set('display_errors', 1);
                 var numWords       = $('input[name=numWords]').val();
                 var SpecChar       = document.getElementById("SpecChar").checked ? 1 : 0;
                 var capFirstChar   = document.getElementById("capFirstChar").checked ? 1 : 0;
+                var caseOpt        = $('input:radio[name=caseOpt]:checked').val();
                 var incNum         = document.getElementById("incNum").checked ? 1 : 0;
+                var maxLength      = $('input[name=maxLength]').val();
 
                 var proceed = true;
+
+
+                if ((maxLength > -1) && (maxLength < 100) && (maxLength != '')) {} else {
+                    $('input[name=maxLength]').css('border-color','red');
+                    proceed = false;
+                }
 
                 if(proceed)
                 {
                     //data to be sent to server
-                    post_data = {'numWords':numWords, 'SpecChar':SpecChar, 'capFirstChar':capFirstChar, 'incNum':incNum};
+                    post_data = {'numWords':numWords, 'SpecChar':SpecChar, 'capFirstChar':capFirstChar, 'caseOpt':caseOpt, 'incNum':incNum, 'maxLength':maxLength};
 
                     //Ajax post data to server
                     $.post('logic.php', post_data, function(response){
@@ -61,6 +69,7 @@ ini_set('display_errors', 1);
             });
 
         });
+
     </script>
 
 </head>
@@ -70,7 +79,8 @@ ini_set('display_errors', 1);
     <fieldset id="passwd_form">
     <legend>XKCD Password Options</legend>
     <div id="result"></div>
-        <label for="numWords"><span>Password Length:  </span>
+
+        <label for="numWords"><span>Word Length:</span>
             <input name="numWords" id="numWords" type="range" min="2" max="8" step="1" value="2"/>
         </label>
 
@@ -78,12 +88,22 @@ ini_set('display_errors', 1);
             <input name="SpecChar" id="SpecChar" type="checkbox"/>
         </label>
 
-        <label for="capFirstChar"><span>Uppercase first character?</span>
+        <label for="incNum"><span>Include Number?</span>
+            <input name="incNum" id="incNum" type="checkbox"/>
+        </label>
+
+        <label for="caseOpt"><span>Case Options:</span><br/>
+            <input type="radio" name="caseOpt" value="allLower" checked><span>Lower Case (ALL)</span><br/>
+            <input type="radio" name="caseOpt" value="allUpper"><span>Upper Case (ALL)</span><br/>
+            <input type="radio" name="caseOpt" value="firstUpper"><span>Upper Case (First Letter / Each Word)</span>
+        </label>
+
+        <label for="capFirstChar"><span>Upper case first word?</span>
             <input name="capFirstChar" id="capFirstChar" type="checkbox"/>
         </label>
 
-        <label for="incNum"><span>Include Number?</span>
-            <input name="incNum" id="incNum" type="checkbox"/>
+        <label for="maxLength"><span>Max Length (1-99 : 0 = No Max) </span>
+            <input name="maxLength" id="maxLength" type="number" min="0" max="99" value="0">
         </label>
 
         <label><span>&nbsp;</span>
