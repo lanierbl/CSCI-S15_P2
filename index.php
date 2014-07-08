@@ -1,8 +1,3 @@
-<?php
-error_reporting(-1); # Report all PHP errors
-ini_set('display_errors', 1);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +19,7 @@ ini_set('display_errors', 1);
     <script type="text/javascript">
         $(document).ready(function() {
             $("#submit_btn").click(function() {
-                //get input field values
+                //Set form variables to be sent via JSON
                 var numWords       = $('input[name=numWords]').val();
                 var SpecChar       = document.getElementById("SpecChar").checked ? 1 : 0;
                 var capFirstChar   = document.getElementById("capFirstChar").checked ? 1 : 0;
@@ -34,7 +29,7 @@ ini_set('display_errors', 1);
 
                 var proceed = true;
 
-
+                // Quick client-side verification to make sure only number was entered in number box
                 if ((maxLength > -1) && (maxLength < 100) && (maxLength != '')) {} else {
                     $('input[name=maxLength]').css('border-color','red');
                     proceed = false;
@@ -42,13 +37,13 @@ ini_set('display_errors', 1);
 
                 if(proceed)
                 {
-                    //data to be sent to server
+                    // JSON data sent to PHP form for processing
                     post_data = {'numWords':numWords, 'SpecChar':SpecChar, 'capFirstChar':capFirstChar, 'caseOpt':caseOpt, 'incNum':incNum, 'maxLength':maxLength};
 
-                    //Ajax post data to server
+                    //Ajax response
                     $.post('logic.php', post_data, function(response){
 
-                        //load json data from server and output message
+                        // Load JSON data and display
                         if(response.type == 'error')
                         {
                             output = '<div class="error">'+response.text+'</div>';
@@ -62,7 +57,7 @@ ini_set('display_errors', 1);
                 }
             });
 
-            //reset previously set border colors and hide all message on .keyup()
+            //reset form when new options selected
             $("#passwd_form input, #passwd_form textarea").keyup(function() {
                 $("#passwd_form input, #passwd_form textarea").css('border-color','');
                 $("#result").slideUp();
@@ -76,12 +71,13 @@ ini_set('display_errors', 1);
 
 <body>
 
+    <!--  XKCD Password Form  -->
     <fieldset id="passwd_form">
     <legend>XKCD Password Options</legend>
     <div id="result"></div>
 
         <label for="numWords"><span>Word Length:</span>
-            <input name="numWords" id="numWords" type="range" min="2" max="8" step="1" value="2"/>
+            2 <input name="numWords" id="numWords" type="range" min="2" max="8" step="1" value="2"/> 8
         </label>
 
         <label for="SpecChar"><span>Special Character?</span>
@@ -93,9 +89,9 @@ ini_set('display_errors', 1);
         </label>
 
         <label for="caseOpt"><span>Case Options:</span><br/>
-            <input type="radio" name="caseOpt" value="allLower" checked><span>Lower Case (ALL)</span><br/>
-            <input type="radio" name="caseOpt" value="allUpper"><span>Upper Case (ALL)</span><br/>
-            <input type="radio" name="caseOpt" value="firstUpper"><span>Upper Case (First Letter / Each Word)</span>
+            <input type="radio" name="caseOpt" id="caseOpt" value="allLower" checked><span>* Case (ALL)</span><br/>
+            <input type="radio" name="caseOpt" id="caseOpt" value="allUpper"><span>* UPPER CASE (ALL)</span><br/>
+            <input type="radio" name="caseOpt" id="caseOpt" value="firstUpper"><span>* Upper Case (All First Letters)</span>
         </label>
 
         <label for="capFirstChar"><span>Upper case first word?</span>
@@ -109,9 +105,13 @@ ini_set('display_errors', 1);
         <label><span>&nbsp;</span>
             <button class="submit_btn" id="submit_btn">Submit</button>
         </label>
-
     </fieldset>
-
+    <div id="info">
+        <p>The XKCD Password Generator is a handy tool that creates secure<br/>passwords based on combinations of everyday words.</p>
+        <p>Additional options are available to further personalize your password.</p>
+        <p>This tool was inspired by the popular XKCD comic:</p>
+        <a href="http://xkcd.com/936/"><img class="displayed" src="images/xkcd_passwd.png" alt=""></a>
+    </div>
 
 </body>
 </html>

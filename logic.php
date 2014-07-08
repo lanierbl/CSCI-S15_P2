@@ -1,7 +1,7 @@
 <?php
 if($_POST)
 {
-    //check $_POST vars are set, exit if any missing
+    //Check $_POST vars are set, exit if any missing
     if(!isset($_POST["numWords"]) || !isset($_POST["capFirstChar"]) || !isset($_POST["caseOpt"]))
     {
         $output = json_encode(array('type'=>'error', 'text' => 'Input fields are empty!'));
@@ -44,18 +44,19 @@ if($_POST)
             $passwd = $passwd."-";
         }
     }
+    // Convert string if all lower-case is desired (Except when the first character of first word is selected)
     if (($caseOpt == 'allLower') and !($capFirstChar)) {
         $passwd = strtolower($passwd);
     }
-
+    // Convert string if all upper-case is desired
     if ($caseOpt == 'allUpper') {
         $passwd = strtoupper($passwd);
     }
-
+    // Truncate string if it exceeds the maximum length desired
     if ($maxLength != 0)  {
         $passwd = substr($passwd,0,$maxLength);
     }
-
+    //  Send back JSON array
     $output = json_encode(array('type'=>'message', 'text'=>$passwd));
     die($output);
 

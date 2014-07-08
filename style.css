@@ -4,7 +4,7 @@
     border: 1px solid #DDD;
     border-radius: 5px;
     font-family: Arial;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     color: #666666;
     background:#FAFAFA;
@@ -25,7 +25,7 @@
 
 #passwd_form label span {
     float:left;
-    width:200px;
+    width:250px;
     color:#666666;
 }
 
@@ -36,16 +36,6 @@
     padding-left: 4px;
     color: #666;
     width: 180px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#passwd_form textarea {
-    border: 1px solid #DBDBDB;
-    border-radius: 3px;
-    padding-left: 4px;
-    color: #666;
-    height:100px;
-    width: 90px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -79,4 +69,26 @@
     border: 1px solid #FFCACA;
     border-radius: 5px;
     font-weight: normal;
+}
+
+#info {
+    width:800px;
+    padding:20px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    color: #6894c9;
+    background:#FAFAFA;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 15px;
+    text-align: center;
+}
+
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
 }
