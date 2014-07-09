@@ -1,7 +1,7 @@
 # P2 - Brent Lanier - CSCI S-15 (Summer 2014)
 
 ## PROD URL
-<http://cscis15.lanier.us/P2/>
+<http://p2.cscis15.lanier.us/>
 
 ## P2 Description
 XKCD Password Generator - Generates (word-based) strong passwords based on variety of options
