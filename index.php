@@ -88,11 +88,12 @@
             <input name="incNum" id="incNum" type="checkbox"/>
         </label>
 
-        <label for="caseOpt"><span>Case Options:</span><br/>
-            <input type="radio" name="caseOpt" id="caseOpt" value="allLower" checked><span>* Case (ALL)</span><br/>
-            <input type="radio" name="caseOpt" value="allUpper"><span>* UPPER CASE (ALL)</span><br/>
-            <input type="radio" name="caseOpt" value="firstUpper"><span>* Upper Case (All First Letters)</span>
-        </label>
+        <fieldset id="caseOpt">
+            <span>Case Options:</span><br/>
+                <label><input type="radio" name="caseOpt" id="caseOpt" value="allLower" checked><span>* Case (ALL)</span></label>
+                <label><input type="radio" name="caseOpt" value="allUpper"><span>* UPPER CASE (ALL)</span></label>
+                <label><input type="radio" name="caseOpt" value="firstUpper"><span>* Upper Case (All First Letters)</span></label>
+        </fieldset>
 
         <label for="capFirstChar"><span>Upper case first word?</span>
             <input name="capFirstChar" id="capFirstChar" type="checkbox"/>
