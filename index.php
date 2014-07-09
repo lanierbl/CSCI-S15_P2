@@ -90,7 +90,7 @@
 
         <fieldset id="caseOpt">
             <span>Case Options:</span><br/>
-                <label><input type="radio" name="caseOpt" id="caseOpt" value="allLower" checked><span>* Case (ALL)</span></label>
+                <label><input type="radio" name="caseOpt" value="allLower" checked><span>* Case (ALL)</span></label>
                 <label><input type="radio" name="caseOpt" value="allUpper"><span>* UPPER CASE (ALL)</span></label>
                 <label><input type="radio" name="caseOpt" value="firstUpper"><span>* Upper Case (All First Letters)</span></label>
         </fieldset>
